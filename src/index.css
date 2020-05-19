@@ -10,3 +10,7 @@ body {
 .code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.robo-header {
+	font-size: 8.5vw;
+}

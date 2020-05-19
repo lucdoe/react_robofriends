@@ -1,10 +1,12 @@
 @font-face {
 	font-family: SEGA;
+	font-style: normal;
+	font-weight: 400;
 	src: url(SEGA.TTF);
+	font-display: swap;
 }
-
 h1 {
-	font-family: SEGA;
+	font-family: SEGA, sans-serif;
 	letter-spacing: 7px;
 }
 input {
