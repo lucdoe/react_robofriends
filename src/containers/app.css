@@ -1,0 +1,12 @@
+@font-face {
+	font-family: SEGA;
+	src: url(SEGA.TTF);
+}
+
+h1 {
+	font-family: SEGA;
+	letter-spacing: 7px;
+}
+input {
+	letter-spacing: 3px;
+}

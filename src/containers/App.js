@@ -1,43 +1,48 @@
 import React, { Fragment, Component } from 'react'
+import { connect } from 'react-redux'
 import CardList from '../components/CardList'
 import SearchBox from '../components/SearchBox'
 import Scroll from '../components/Scroll'
 import ErrorBoundry from '../components/ErrorBundry'
+import Header from '../components/Header'
+import './app.css'
+
+import { setSearchField, requestRobots } from '../actions'
+
+const mapStateToProps = (state) => {
+	return {
+		searchField: state.searchRobots.searchField,
+		robots: state.requestRobots.robots,
+		isPending: state.requestRobots.isPending,
+		error: state.requestRobots.error,
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+		// higher order function, returns function
+		onRequestRobots: () => dispatch(requestRobots()), // requestRobots(dispatch)
+	}
+}
 
 class App extends Component {
-	constructor() {
-		super()
-		this.state = {
-			robots: [],
-			searchField: '',
-		}
-	}
-
 	componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/users')
-			.then((response) => response.json())
-			.then((users) => {
-				this.setState({ robots: users })
-			})
+		this.props.onRequestRobots()
 	}
 
-	onSearchChange = (event) => {
-		this.setState({
-			searchField: event.target.value,
-		})
-	}
 	render() {
-		const { robots, searchField } = this.state
+		const { searchField, onSearchChange, robots, isPending } = this.props
 		const filteredRobots = robots.filter((robot) => {
 			return robot.name.toLowerCase().includes(searchField.toLowerCase())
 		})
-		return !robots.length ? (
+		return isPending ? (
 			<p className="tc ma20 code f2">Loading...</p>
 		) : (
 			<Fragment>
 				<section className="tc code">
-					<h1 className="f1">Robofriends</h1>
-					<SearchBox searchChange={this.onSearchChange} />
+					<Header />
+					<SearchBox searchChange={onSearchChange} />
 					<Scroll>
 						<ErrorBoundry>
 							<CardList robots={filteredRobots} />
@@ -49,4 +54,6 @@ class App extends Component {
 	}
 }
 
-export default App
+// hire order function, returns another function
+// connect runs and returns app as function
+export default connect(mapStateToProps, mapDispatchToProps)(App)
