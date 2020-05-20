@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<article
+  className="bg-light-green dib br4 pa3 ma3 grow bw5 shadow-5 tc"
+>
+  <img
+    alt="Robot Card"
+    src="https://robohash.org/undefined?size=100x100"
+  />
+  <div>
+    <h2
+      className="f3 b"
+    />
+    <p />
+  </div>
+</article>
+`;

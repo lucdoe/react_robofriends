@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders mainpager without crashing 1`] = `
+<section
+  className="tc code"
+>
+  <div>
+    <h1
+      className="robo-header"
+    >
+      Robofriends
+    </h1>
+    <button
+      id="counter"
+      onClick={[Function]}
+    >
+      Count: 
+      0
+    </button>
+  </div>
+  <section
+    className="pa2 mb4"
+  >
+    <input
+      aria-label="Search Robots"
+      className="pa3 ba b--green bg-lightest-blue tc"
+      placeholder="search robots"
+      type="search"
+    />
+  </section>
+  <section
+    className="ma1 ba b--dashed bw3"
+    style={
+      Object {
+        "height": "93vw",
+        "overflowY": "scroll",
+      }
+    }
+  />
+</section>
+`;
